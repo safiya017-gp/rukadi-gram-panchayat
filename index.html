@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>रुकडी ग्रामपंचायत | Rukadi Gram Panchayat</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,"Noto Sans Devanagari",sans-serif;color:#253238;background:#fff;line-height:1.6}
+header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 15px #00000012}
+.topbar{max-width:1100px;margin:auto;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand-mr{font-size:27px;font-weight:800;color:#126b57}
+.brand-en{font-size:17px;font-weight:700;color:#555}
+.place{font-size:13px;color:#777;margin-top:2px}
+#langBtn{border:0;background:#126b57;color:#fff;border-radius:22px;padding:9px 18px;font-weight:700;cursor:pointer}
+nav{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;padding:9px 15px;border-top:1px solid #eee}
+nav a{text-decoration:none;color:#33443f;padding:8px 12px;border-radius:7px;font-size:14px}
+nav a:hover{background:#e8f5f0;color:#126b57}
+.hero{min-height:470px;background:linear-gradient(135deg,#064b3d,#0a6b57);display:flex;align-items:center}
+.hero-content{max-width:1100px;width:100%;margin:auto;padding:60px 25px;color:#fff}
+.tag{display:inline-block;background:#ffffff22;border:1px solid #ffffff55;padding:7px 14px;border-radius:20px;font-size:13px}
+.hero h1{font-size:46px;max-width:760px;line-height:1.2;margin:20px 0 12px}
+.hero p{font-size:20px;margin-bottom:25px}
+.btn{display:inline-block;background:#fff;color:#126b57;text-decoration:none;padding:11px 22px;border-radius:7px;font-weight:700}
+.section{max-width:1100px;margin:auto;padding:70px 25px}
+.soft{max-width:none;background:#f5faf8;padding-left:calc((100% - 1050px)/2);padding-right:calc((100% - 1050px)/2)}
+.section-title{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.section-title span{font-size:13px;color:#126b57;font-weight:800}
+.section-title h2{font-size:30px;color:#243b35}
+.about-box{background:#fff;border-left:4px solid #1b8b6e;padding:24px;border-radius:8px;box-shadow:0 5px 20px #00000008}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.info-card,.service,.scheme{background:#fff;border:1px solid #e6eeeb;border-radius:10px;padding:23px;box-shadow:0 4px 14px #00000007}
+.info-card b{font-size:30px}.info-card h3,.service h3,.scheme h3{margin:9px 0 6px;color:#126b57}
+.service span{font-size:29px}
+.service p,.scheme p,.info-card p{color:#65726e;font-size:14px}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.work{display:flex;gap:15px;background:#fff;padding:22px;border-radius:10px;border:1px solid #e4ebe8}
+.work-icon{font-size:30px}
+.work h3{color:#126b57}.work p{font-size:14px;color:#66736f}
+.scheme{border-top:4px solid #1b8b6e}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery div{height:170px;border-radius:10px;background:linear-gradient(135deg,#dcefe8,#a8d3c4);display:flex;align-items:center;justify-content:center;text-align:center;font-size:19px;font-weight:800;color:#145846}
+.gallery small{font-weight:400;color:#476f63}
+.hint{text-align:center;margin-top:15px;color:#777;font-size:13px}
+.contact{padding-bottom:80px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.contact-grid>div{padding:24px;background:#f5faf8;border-radius:10px}
+.contact-grid h3{color:#126b57;margin-bottom:8px}
+.contact-grid p{color:#596863}
+.contact-grid small{color:#888}
+footer{text-align:center;background:#173c34;color:#dceae6;padding:25px;font-size:13px}
+footer strong{font-size:18px;color:#fff}
+footer span{opacity:.8}
+@media(max-width:800px){
+ .topbar{align-items:flex-start}.brand-mr{font-size:22px}.place{font-size:11px}
+ nav{justify-content:flex-start}
+ .hero{min-height:420px}.hero h1{font-size:34px}
+ .cards,.work-grid,.contact-grid,.gallery{grid-template-columns:1fr}
+ .soft{padding-left:25px;padding-right:25px}
+}
+@media(max-width:480px){
+ .topbar{padding:14px}.hero-content{padding:45px 20px}.section{padding:50px 20px}
+ #langBtn{padding:8px 13px}
+}
+
+/* Section navigation: only the selected page is shown */
+main > section { display: none; }
+main > section.active-section { display: block; }
+main > section#home.active-section { display: flex; }
+.nav-link.active { background:#126b57; color:#fff; }
+.nav-link.active:hover { background:#0d5949; color:#fff; }
+.nav-link { cursor:pointer; transition:.2s ease; }
+.page-intro { max-width:1100px; margin:0 auto; padding:16px 25px 0; color:#6b7773; font-size:14px; }
+@media(max-width:800px){ .page-intro{padding:12px 20px 0} }
+
+
+.photo-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);align-items:center;justify-content:center;z-index:9999;padding:25px}
+.photo-modal img{max-width:92%;max-height:90%;object-fit:contain;border-radius:10px}
+.gallery-photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.photo-card{margin:0;background:#fff;border:1px solid #e3ebe7;border-radius:12px;overflow:hidden}.photo-card img{width:100%;height:220px;object-fit:cover;display:block}.photo-card figcaption{text-align:center;padding:13px;font-weight:700;color:#126b57}.contact-grid{display:grid;grid-template-columns:320px 1fr;gap:20px}.contact-card{background:#fff;padding:24px;border-radius:12px;border:1px solid #e3ebe7}.map-box{height:360px;border-radius:12px;overflow:hidden;border:1px solid #dce7e3}.map-static svg{width:100%;height:100%;display:block}.map-link{display:inline-block;background:#126b57;color:#fff;text-decoration:none;padding:10px 16px;border-radius:7px;font-weight:700}@media(max-width:800px){.gallery-photo-grid,.contact-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div>
+      <div class="brand-mr">रुकडी ग्रामपंचायत</div>
+      <div class="brand-en">Rukadi Gram Panchayat</div>
+      <div class="place">ता. हातकणंगले, जि. कोल्हापूर | Taluka - Hatkanangle, District - Kolhapur</div>
+    </div>
+    <button id="langBtn">English</button>
+  </div>
+
+  <nav id="mainNav">
+    <a href="#home" class="nav-link active" data-target="home" data-mr="मुखपृष्ठ" data-en="Home">मुखपृष्ठ</a>
+    <a href="#about" class="nav-link" data-target="about" data-mr="ग्रामपंचायतीबद्दल" data-en="About Gram Panchayat">ग्रामपंचायतीबद्दल</a>
+    <a href="#village" class="nav-link" data-target="village" data-mr="गावाची माहिती" data-en="Village Information">गावाची माहिती</a>
+    <a href="#services" class="nav-link" data-target="services" data-mr="ग्रामपंचायत सेवा" data-en="Gram Panchayat Services">ग्रामपंचायत सेवा</a>
+    <a href="#works" class="nav-link" data-target="works" data-mr="विकासकामे" data-en="Development Works">विकासकामे</a>
+    <a href="#schemes" class="nav-link" data-target="schemes" data-mr="योजना" data-en="Schemes">योजना</a>
+    <a href="#gallery" class="nav-link" data-target="gallery" data-mr="गॅलरी" data-en="Gallery">गॅलरी</a>
+<a href="#contact" class="nav-link" data-target="contact" data-mr="संपर्क" data-en="Contact">संपर्क</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-content">
+    <span class="tag">ग्रामविकास • पारदर्शक प्रशासन • नागरिक सेवा</span>
+    <h1 data-mr="रुकडी ग्रामपंचायतीमध्ये आपले स्वागत आहे"
+        data-en="Welcome to Rukadi Gram Panchayat">रुकडी ग्रामपंचायतीमध्ये आपले स्वागत आहे</h1>
+    <p data-mr="ता. हातकणंगले, जि. कोल्हापूर"
+       data-en="Taluka - Hatkanangle, District - Kolhapur">ता. हातकणंगले, जि. कोल्हापूर</p>
+    <a class="btn" href="#about" id="learnMoreBtn" data-mr="अधिक माहिती" data-en="Learn More">अधिक माहिती</a>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="section-title">
+    <span>01</span><h2 data-mr="ग्रामपंचायतीबद्दल" data-en="About Gram Panchayat">ग्रामपंचायतीबद्दल</h2>
+  </div>
+  <div class="about-box">
+    <p data-mr="रुकडी ग्रामपंचायत ही नागरिकांना स्थानिक स्वराज्य संस्थेच्या माध्यमातून विविध नागरी सुविधा व सेवा उपलब्ध करून देण्यासाठी कार्यरत आहे. गावाचा सर्वांगीण विकास, स्वच्छता, पाणीपुरवठा, रस्ते, सार्वजनिक सुविधा आणि नागरिकांचा सहभाग यांना प्राधान्य देणे हे आमचे उद्दिष्ट आहे."
+       data-en="Rukadi Gram Panchayat works to provide civic facilities and local services to citizens. Our focus is on overall village development, cleanliness, water supply, roads, public facilities and active citizen participation.">
+       रुकडी ग्रामपंचायत ही नागरिकांना स्थानिक स्वराज्य संस्थेच्या माध्यमातून विविध नागरी सुविधा व सेवा उपलब्ध करून देण्यासाठी कार्यरत आहे. गावाचा सर्वांगीण विकास, स्वच्छता, पाणीपुरवठा, रस्ते, सार्वजनिक सुविधा आणि नागरिकांचा सहभाग यांना प्राधान्य देणे हे आमचे उद्दिष्ट आहे.
+    </p>
+  </div>
+</section>
+
+<section id="village" class="section soft">
+  <div class="section-title">
+    <span>02</span><h2 data-mr="गावाची माहिती" data-en="Village Information">गावाची माहिती</h2>
+  </div>
+  <div class="cards">
+    <div class="info-card"><b>📍</b><h3 data-mr="स्थान" data-en="Location">स्थान</h3><p>रुकडी, ता. हातकणंगले, जि. कोल्हापूर</p></div>
+    <div class="info-card"><b>🏛️</b><h3 data-mr="ग्रामपंचायत" data-en="Gram Panchayat">ग्रामपंचायत</h3><p>Rukadi Gram Panchayat</p></div>
+    <div class="info-card"><b>🌱</b><h3 data-mr="ग्रामविकास" data-en="Village Development">ग्रामविकास</h3><p data-mr="स्वच्छ, सुंदर व सक्षम गावासाठी प्रयत्न" data-en="Working towards a clean, beautiful and progressive village">स्वच्छ, सुंदर व सक्षम गावासाठी प्रयत्न</p></div>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <div class="section-title">
+    <span>03</span><h2 data-mr="ग्रामपंचायत सेवा" data-en="Gram Panchayat Services">ग्रामपंचायत सेवा</h2>
+  </div>
+  <div class="cards">
+    <div class="service"><span>📜</span><h3 data-mr="जन्म प्रमाणपत्र" data-en="Birth Certificate">जन्म प्रमाणपत्र</h3><p data-mr="जन्म नोंदणी व प्रमाणपत्रासाठी ग्रामपंचायत कार्यालयाशी संपर्क साधा." data-en="Contact the Gram Panchayat office for birth registration and certificate.">जन्म नोंदणी व प्रमाणपत्रासाठी ग्रामपंचायत कार्यालयाशी संपर्क साधा.</p></div>
+    <div class="service"><span>🕊️</span><h3 data-mr="मृत्यू प्रमाणपत्र" data-en="Death Certificate">मृत्यू प्रमाणपत्र</h3><p data-mr="मृत्यू नोंदणी व प्रमाणपत्रासाठी कार्यालयाशी संपर्क साधा." data-en="Contact the office for death registration and certificate.">मृत्यू नोंदणी व प्रमाणपत्रासाठी कार्यालयाशी संपर्क साधा.</p></div>
+    <div class="service"><span>💍</span><h3 data-mr="विवाह नोंदणी" data-en="Marriage Registration">विवाह नोंदणी</h3><p data-mr="विवाह नोंदणीसाठी आवश्यक कागदपत्रांसह ग्रामपंचायत कार्यालयाशी संपर्क साधा." data-en="Contact the Gram Panchayat office with required documents for marriage registration.">विवाह नोंदणीसाठी आवश्यक कागदपत्रांसह ग्रामपंचायत कार्यालयाशी संपर्क साधा.</p></div>
+    <div class="service"><span>🧾</span><h3 data-mr="कर व प्रमाणपत्रे" data-en="Taxes & Certificates">कर व प्रमाणपत्रे</h3><p data-mr="ग्रामपंचायत कर व विविध प्रमाणपत्रांबाबत माहिती कार्यालयातून मिळवा." data-en="Get information about local taxes and certificates from the office.">ग्रामपंचायत कर व विविध प्रमाणपत्रांबाबत माहिती कार्यालयातून मिळवा.</p></div>
+  </div>
+</section>
+
+<section id="works" class="section soft">
+  <div class="section-title">
+    <span>04</span><h2 data-mr="विकासकामे" data-en="Development Works">विकासकामे</h2>
+  </div>
+  <div class="work-grid">
+    <div class="work"><div class="work-icon">💧</div><div><h3 data-mr="पाणीपुरवठा" data-en="Water Supply">पाणीपुरवठा</h3><p data-mr="गावातील पाणीपुरवठा सुविधा सुधारण्यासाठी कामे." data-en="Works to improve village water supply facilities.">गावातील पाणीपुरवठा सुविधा सुधारण्यासाठी कामे.</p></div></div>
+    <div class="work"><div class="work-icon">🛣️</div><div><h3 data-mr="रस्ते व सुविधा" data-en="Roads & Facilities">रस्ते व सुविधा</h3><p data-mr="नागरिकांसाठी आवश्यक पायाभूत सुविधांचा विकास." data-en="Development of essential infrastructure for citizens.">नागरिकांसाठी आवश्यक पायाभूत सुविधांचा विकास.</p></div></div>
+    <div class="work"><div class="work-icon">🧹</div><div><h3 data-mr="स्वच्छता" data-en="Cleanliness">स्वच्छता</h3><p data-mr="स्वच्छ व निरोगी गावासाठी स्वच्छता उपक्रम." data-en="Cleanliness initiatives for a healthy village.">स्वच्छ व निरोगी गावासाठी स्वच्छता उपक्रम.</p></div></div>
+  </div>
+</section>
+
+<section id="schemes" class="section">
+  <div class="section-title">
+    <span>05</span><h2 data-mr="योजना" data-en="Schemes">योजना</h2>
+  </div>
+  <div class="cards">
+    <div class="scheme"><h3>🏠 <span data-mr="प्रधानमंत्री आवास योजना" data-en="Pradhan Mantri Awas Yojana">प्रधानमंत्री आवास योजना</span></h3><p data-mr="पात्र लाभार्थ्यांसाठी घरकुलाशी संबंधित शासकीय योजना." data-en="Government housing support scheme for eligible beneficiaries.">पात्र लाभार्थ्यांसाठी घरकुलाशी संबंधित शासकीय योजना.</p></div>
+    <div class="scheme"><h3>🌿 <span data-mr="स्वच्छता व ग्रामविकास" data-en="Cleanliness & Village Development">स्वच्छता व ग्रामविकास</span></h3><p data-mr="स्वच्छ, सुंदर आणि शाश्वत गावासाठी विविध उपक्रम." data-en="Initiatives for a clean, beautiful and sustainable village.">स्वच्छ, सुंदर आणि शाश्वत गावासाठी विविध उपक्रम.</p></div>
+    <div class="scheme"><h3>👨‍👩‍👧 <span data-mr="नागरिक कल्याण" data-en="Citizen Welfare">नागरिक कल्याण</span></h3><p data-mr="नागरिकांसाठी उपलब्ध विविध शासकीय योजनांची माहिती." data-en="Information about government welfare schemes available to citizens.">नागरिकांसाठी उपलब्ध विविध शासकीय योजनांची माहिती.</p></div>
+  </div>
+</section>
+
+
+<section id="gallery" class="section soft">
+  <div class="section-title"><span>06</span><h2 data-mr="गॅलरी" data-en="Gallery">गॅलरी</h2></div>
+  <div class="gallery-photo-grid">
+    <figure class="photo-card">
+      <img src="https://www.mappls.com/place/8ADA68_1649391800579_0.png" alt="Rukadi Railway Station">
+      <figcaption data-mr="रुकडी रेल्वे स्थानक" data-en="Rukadi Railway Station">रुकडी रेल्वे स्थानक</figcaption>
+    </figure>
+    <figure class="photo-card">
+      <img src="https://www.mappls.com/place/8ADA68_1649391800680_1.png" alt="Rukadi Signboard">
+      <figcaption data-mr="रुकडी नावफलक" data-en="Rukadi Signboard">रुकडी नावफलक</figcaption>
+    </figure>
+    <figure class="photo-card">
+      <div class="photo-placeholder">🏡<br><small>Rukadi Village</small></div>
+      <figcaption data-mr="रुकडी गाव" data-en="Rukadi Village">रुकडी गाव</figcaption>
+    </figure>
+  </div>
+  <p class="hint" data-mr="टीप: सार्वजनिकरीत्या उपलब्ध रुकडी-संबंधित फोटो वापरले आहेत. अधिकृत ग्रामपंचायत फोटो नंतर जोडता येतील."
+     data-en="Note: Publicly available Rukadi-related photos are used. Official Gram Panchayat photos can be added later.">
+     टीप: सार्वजनिकरीत्या उपलब्ध रुकडी-संबंधित फोटो वापरले आहेत. अधिकृत ग्रामपंचायत फोटो नंतर जोडता येतील.
+  </p>
+</section>
+
+
+
+<section id="contact" class="section soft"><div class="section-title"><span>07</span><h2 data-mr="संपर्क व नकाशा" data-en="Contact & Map">संपर्क व नकाशा</h2></div><div class="contact-grid"><div class="contact-card"><h3>Rukadi Gram Panchayat</h3><p><b>Village:</b> Rukadi</p><p><b>Taluka:</b> Hatkanangle</p><p><b>District:</b> Kolhapur</p><p><b>Country:</b> India</p><p><b>Contact:</b> 8087303861</p><a class="map-link" href="https://www.openstreetmap.org/?mlat=16.72248&mlon=74.35405#map=14/16.72248/74.35405" target="_blank">Open Live Map</a></div><div class="map-box map-static"><svg viewBox="0 0 760 380" aria-label="Rukadi location map"><rect width="760" height="380" fill="#eef3f1"/><path d="M0 95 C120 65 180 120 285 90 S475 60 760 105" fill="none" stroke="#d2d9d6" stroke-width="34"/><path d="M-10 290 C130 240 230 310 350 260 S560 220 770 275" fill="none" stroke="#d9dfdd" stroke-width="28"/><path d="M75 20 C155 105 135 185 220 365" fill="none" stroke="#fff" stroke-width="18"/><path d="M520 0 C475 100 560 180 490 380" fill="none" stroke="#fff" stroke-width="18"/><path d="M0 180 L760 180 M380 0 L380 380" stroke="#c7d0cc" stroke-width="3" stroke-dasharray="10 8"/><circle cx="380" cy="180" r="20" fill="#126b57" stroke="#fff" stroke-width="7"/><circle cx="380" cy="180" r="7" fill="#fff"/><rect x="270" y="205" width="220" height="52" rx="10" fill="#fff" stroke="#d8e2de"/><text x="380" y="228" text-anchor="middle" font-size="20" font-weight="700" fill="#126b57">Rukadi</text><text x="380" y="247" text-anchor="middle" font-size="13" fill="#5d6b67">Hatkanangle, Kolhapur</text></svg></div></div></section>
+</main>
+
+<footer>
+  <strong>Rukadi Gram Panchayat</strong><br>
+  Taluka - Hatkanangle, District - Kolhapur<br>
+  <span>© 2026 Rukadi Gram Panchayat. All Rights Reserved.</span>
+</footer>
+
+<script>
+let english = false;
+
+const btn = document.getElementById("langBtn");
+const links = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll("main > section");
+
+function showSection(id) {
+  sections.forEach(section => {
+    section.classList.toggle("active-section", section.id === id);
+  });
+
+  links.forEach(link => {
+    link.classList.toggle("active", link.dataset.target === id);
+  });
+
+  window.scrollTo({top: 0, behavior: "smooth"});
+  history.replaceState(null, "", "#" + id);
+}
+
+links.forEach(link => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    showSection(this.dataset.target);
+  });
+});
+
+function setLanguage() {
+  document.documentElement.lang = english ? "en" : "mr";
+  btn.textContent = english ? "मराठी" : "English";
+
+  document.querySelectorAll("[data-mr]").forEach(el => {
+    el.textContent = english ? el.dataset.en : el.dataset.mr;
+  });
+}
+
+btn.addEventListener("click", () => {
+  english = !english;
+  setLanguage();
+});
+
+const initial = location.hash.replace("#", "");
+showSection([...sections].some(s => s.id === initial) ? initial : "home");
+const learnMore = document.getElementById("learnMoreBtn");
+if (learnMore) {
+  learnMore.addEventListener("click", function(e) {
+    e.preventDefault();
+    showSection("about");
+  });
+}
+</script>
+
+<div id="photoModal" class="photo-modal" onclick="this.style.display='none'">
+  <img id="modalImage" alt="Gallery photo">
+</div>
+
+<script>
+document.querySelectorAll(".photo-card img").forEach(function(img){
+  img.addEventListener("click", function(e){
+    e.stopPropagation();
+    document.getElementById("modalImage").src=this.src;
+    document.getElementById("photoModal").style.display="flex";
+  });
+});
+</script>
+</body>
+</html>
