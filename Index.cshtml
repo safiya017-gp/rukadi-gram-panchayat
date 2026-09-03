@@ -1,0 +1,636 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Rukadi Gram Panchayat</title>
+
+    <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background: #f3faf6;
+                color: #222;
+            }
+
+            header {
+                background: #16804f;
+                color: white;
+                text-align: center;
+                padding: 25px 10px;
+            }
+
+            header h1 {
+                margin: 0;
+                font-size: 30px;
+            }
+
+            header p {
+                margin: 8px 0 0;
+                font-size: 16px;
+            }
+
+            nav {
+                background: #125b3c;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav button {
+                background: white;
+                color: #125b3c;
+                border: none;
+                padding: 10px 14px;
+                margin: 4px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            nav button:hover {
+                background: #dff5e8;
+            }
+
+            .language {
+                background: #f1c40f;
+                color: #222;
+            }
+
+            section {
+                display: none;
+                max-width: 1100px;
+                margin: auto;
+                padding: 25px 15px;
+            }
+
+            section.active {
+                display: block;
+            }
+
+            h2 {
+                color: #126b43;
+                border-bottom: 2px solid #16804f;
+                padding-bottom: 8px;
+            }
+
+            .welcome {
+                background: white;
+                padding: 25px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 2px 8px #ccc;
+            }
+
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .card {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 7px #ccc;
+            }
+
+            .card h3 {
+                color: #16804f;
+                margin-top: 0;
+            }
+
+            .number {
+                font-size: 24px;
+                font-weight: bold;
+                color: #126b43;
+            }
+
+            ul {
+                line-height: 1.9;
+            }
+
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .gallery img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                border-radius: 10px;
+                border: 3px solid #16804f;
+                background: #ddd;
+            }
+
+            .contact-box {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 7px #ccc;
+                margin-bottom: 20px;
+            }
+
+            iframe {
+                width: 100%;
+                height: 400px;
+                border: 2px solid #16804f;
+                border-radius: 10px;
+            }
+
+            footer {
+                background: #125b3c;
+                color: white;
+                text-align: center;
+                padding: 18px;
+                margin-top: 20px;
+            }
+
+            .note {
+                background: #e5f6ec;
+                padding: 12px;
+                border-left: 5px solid #16804f;
+                margin-top: 15px;
+            }
+
+            @@media (max-width: 600px) {
+                header h1 {
+                    font-size: 24px;
+                }
+
+                nav button {
+                    padding: 8px 10px;
+                    font-size: 13px;
+                }
+            }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 data-mr="रुकडी ग्रामपंचायत" data-en="Rukadi Gram Panchayat">
+            रुकडी ग्रामपंचायत
+        </h1>
+
+        <p data-mr="रुकडी, ता. हातकणंगले, जि. कोल्हापूर, महाराष्ट्र"
+           data-en="Rukadi, Taluka Hatkanangale, District Kolhapur, Maharashtra">
+            रुकडी, ता. हातकणंगले, जि. कोल्हापूर, महाराष्ट्र
+        </p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('home')" data-mr="मुख्यपृष्ठ" data-en="Home">मुख्यपृष्ठ</button>
+
+        <button onclick="showSection('about')" data-mr="ग्रामपंचायतीबद्दल" data-en="About">ग्रामपंचायतीबद्दल</button>
+
+        <button onclick="showSection('village')" data-mr="गावाची माहिती" data-en="Village Information">गावाची माहिती</button>
+
+        <button onclick="showSection('services')" data-mr="सेवा" data-en="Services">सेवा</button>
+
+        <button onclick="showSection('development')" data-mr="विकासकामे" data-en="Development Works">विकासकामे</button>
+
+        <button onclick="showSection('schemes')" data-mr="शासकीय योजना" data-en="Schemes">शासकीय योजना</button>
+
+        <button onclick="showSection('gallery')" data-mr="गॅलरी" data-en="Gallery">गॅलरी</button>
+
+        <button onclick="showSection('contact')" data-mr="संपर्क" data-en="Contact">संपर्क</button>
+
+        <button class="language" onclick="changeLanguage()" id="langBtn">
+            English
+        </button>
+    </nav>
+
+
+    <!-- HOME -->
+    <section id="home" class="active">
+
+        <div class="welcome">
+            <h2 data-mr="रुकडी ग्रामपंचायतीमध्ये आपले स्वागत आहे"
+                data-en="Welcome to Rukadi Gram Panchayat">
+                रुकडी ग्रामपंचायतीमध्ये आपले स्वागत आहे
+            </h2>
+
+            <p data-mr="रुकडी गावाची माहिती, ग्रामपंचायत सेवा, विकासकामे आणि शासकीय योजनांची माहिती एका सोप्या वेबसाइटद्वारे उपलब्ध करून देण्यासाठी हा प्रकल्प तयार करण्यात आला आहे."
+               data-en="This project website provides easy access to information about Rukadi village, Gram Panchayat services, development works and government schemes.">
+                रुकडी गावाची माहिती, ग्रामपंचायत सेवा, विकासकामे आणि शासकीय योजनांची माहिती एका सोप्या वेबसाइटद्वारे उपलब्ध करून देण्यासाठी हा प्रकल्प तयार करण्यात आला आहे.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3 data-mr="गावाची लोकसंख्या" data-en="Population">
+                    गावाची लोकसंख्या
+                </h3>
+                <div class="number">17,324</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="कुटुंबे" data-en="Households">
+                    कुटुंबे
+                </h3>
+                <div class="number">3,647</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="क्षेत्रफळ" data-en="Area">
+                    क्षेत्रफळ
+                </h3>
+                <div class="number">16.63 km²</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="पिनकोड" data-en="PIN Code">
+                    पिनकोड
+                </h3>
+                <div class="number">416118</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <h2 data-mr="रुकडी ग्रामपंचायतीबद्दल"
+            data-en="About Rukadi Gram Panchayat">
+            रुकडी ग्रामपंचायतीबद्दल
+        </h2>
+
+        <div class="card">
+
+            <p data-mr="रुकडी हे महाराष्ट्रातील कोल्हापूर जिल्ह्यातील हातकणंगले तालुक्यातील गाव आहे. गावाच्या स्थानिक पातळीवरील प्रशासनासाठी ग्रामपंचायत कार्य करते."
+               data-en="Rukadi is a village in Hatkanangale Taluka of Kolhapur District, Maharashtra. The Gram Panchayat functions as the local village-level administrative body.">
+                रुकडी हे महाराष्ट्रातील कोल्हापूर जिल्ह्यातील हातकणंगले तालुक्यातील गाव आहे.
+                गावाच्या स्थानिक पातळीवरील प्रशासनासाठी ग्रामपंचायत कार्य करते.
+            </p>
+
+            <h3 data-mr="स्थानिक प्रशासनाची रचना"
+                data-en="Local Administration Structure">
+                स्थानिक प्रशासनाची रचना
+            </h3>
+
+            <p data-mr="ग्रामपंचायत → हातकणंगले पंचायत समिती → कोल्हापूर जिल्हा परिषद"
+               data-en="Gram Panchayat → Hatkanangale Panchayat Samiti → Kolhapur Zilla Parishad">
+                ग्रामपंचायत → हातकणंगले पंचायत समिती → कोल्हापूर जिल्हा परिषद
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- VILLAGE -->
+    <section id="village">
+
+        <h2 data-mr="रुकडी गावाची माहिती"
+            data-en="Rukadi Village Information">
+            रुकडी गावाची माहिती
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3 data-mr="एकूण लोकसंख्या" data-en="Total Population">
+                    एकूण लोकसंख्या
+                </h3>
+                <div class="number">17,324</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="पुरुष" data-en="Male">
+                    पुरुष
+                </h3>
+                <div class="number">8,838</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="महिला" data-en="Female">
+                    महिला
+                </h3>
+                <div class="number">8,486</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="एकूण कुटुंबे" data-en="Households">
+                    एकूण कुटुंबे
+                </h3>
+                <div class="number">3,647</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="क्षेत्रफळ" data-en="Area">
+                    क्षेत्रफळ
+                </h3>
+                <div class="number">1,663 Hectares</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="गावाचा कोड" data-en="Census Village Code">
+                    गावाचा कोड
+                </h3>
+                <div class="number">567294</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="पिनकोड" data-en="PIN Code">
+                    पिनकोड
+                </h3>
+                <div class="number">416118</div>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="जवळचे शहर" data-en="Nearest Town">
+                    जवळचे शहर
+                </h3>
+                <div class="number">Ichalkaranji</div>
+            </div>
+
+        </div>
+
+        <div class="note">
+            <b data-mr="टीप:" data-en="Note:">टीप:</b>
+
+            <span data-mr="वरील लोकसंख्या, कुटुंबे, क्षेत्रफळ आणि गावाचा कोड ही Census 2011 मधील माहितीवर आधारित आहेत."
+                  data-en="The population, households, area and village code above are based on Census 2011 information.">
+                वरील लोकसंख्या, कुटुंबे, क्षेत्रफळ आणि गावाचा कोड ही Census 2011 मधील माहितीवर आधारित आहेत.
+            </span>
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section id="services">
+
+        <h2 data-mr="ग्रामपंचायत सेवा"
+            data-en="Gram Panchayat Services">
+            ग्रामपंचायत सेवा
+        </h2>
+
+        <div class="card">
+
+            <ul>
+                <li data-mr="जन्म व मृत्यू नोंदणी संबंधित सेवा"
+                    data-en="Birth and death registration related services">
+                    जन्म व मृत्यू नोंदणी संबंधित सेवा
+                </li>
+
+                <li data-mr="विविध प्रमाणपत्रांसाठी अर्ज व मार्गदर्शन"
+                    data-en="Applications and guidance for various certificates">
+                    विविध प्रमाणपत्रांसाठी अर्ज व मार्गदर्शन
+                </li>
+
+                <li data-mr="ग्रामपंचायत कर वसुली व संबंधित कामे"
+                    data-en="Gram Panchayat tax collection and related work">
+                    ग्रामपंचायत कर वसुली व संबंधित कामे
+                </li>
+
+                <li data-mr="नागरिकांचे अर्ज व तक्रारी स्वीकारणे"
+                    data-en="Receiving citizen applications and complaints">
+                    नागरिकांचे अर्ज व तक्रारी स्वीकारणे
+                </li>
+
+                <li data-mr="स्वच्छता, पाणीपुरवठा व स्थानिक मूलभूत सुविधांशी संबंधित कामे"
+                    data-en="Work related to sanitation, water supply and local basic facilities">
+                    स्वच्छता, पाणीपुरवठा व स्थानिक मूलभूत सुविधांशी संबंधित कामे
+                </li>
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- DEVELOPMENT -->
+    <section id="development">
+
+        <h2 data-mr="विकासकामे"
+            data-en="Development Works">
+            विकासकामे
+        </h2>
+
+        <p data-mr="गावाच्या स्थानिक गरजेनुसार रस्ते, पाणीपुरवठा, स्वच्छता, स्ट्रीट लाईट आणि इतर मूलभूत नागरी सुविधांशी संबंधित विकासकामे केली जाऊ शकतात."
+           data-en="Depending on local needs, development work may include roads, water supply, sanitation, street lighting and other basic civic facilities.">
+            गावाच्या स्थानिक गरजेनुसार रस्ते, पाणीपुरवठा, स्वच्छता, स्ट्रीट लाईट आणि इतर मूलभूत नागरी सुविधांशी संबंधित विकासकामे केली जाऊ शकतात.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3 data-mr="रस्ते व अंतर्गत रस्ते"
+                    data-en="Roads and Internal Roads">
+                    रस्ते व अंतर्गत रस्ते
+                </h3>
+                <p data-mr="रस्ते सुधारणा व देखभाल यासंबंधी स्थानिक विकासकामे."
+                   data-en="Local development work related to road improvement and maintenance.">
+                    रस्ते सुधारणा व देखभाल यासंबंधी स्थानिक विकासकामे.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="पाणी व स्वच्छता"
+                    data-en="Water and Sanitation">
+                    पाणी व स्वच्छता
+                </h3>
+                <p data-mr="पाणीपुरवठा आणि स्वच्छतेशी संबंधित मूलभूत सुविधा."
+                   data-en="Basic facilities related to water supply and sanitation.">
+                    पाणीपुरवठा आणि स्वच्छतेशी संबंधित मूलभूत सुविधा.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 data-mr="स्ट्रीट लाईट"
+                    data-en="Street Lighting">
+                    स्ट्रीट लाईट
+                </h3>
+                <p data-mr="गावातील सार्वजनिक ठिकाणी प्रकाश व्यवस्था."
+                   data-en="Lighting facilities in public areas of the village.">
+                    गावातील सार्वजनिक ठिकाणी प्रकाश व्यवस्था.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCHEMES -->
+    <section id="schemes">
+
+        <h2 data-mr="शासकीय योजना"
+            data-en="Government Schemes">
+            शासकीय योजना
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>PMAY</h3>
+                <p data-mr="प्रधानमंत्री आवास योजनेशी संबंधित माहिती व लाभ."
+                   data-en="Information and benefits related to Pradhan Mantri Awas Yojana.">
+                    प्रधानमंत्री आवास योजनेशी संबंधित माहिती व लाभ.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>MGNREGA</h3>
+                <p data-mr="महात्मा गांधी राष्ट्रीय ग्रामीण रोजगार हमी योजनेशी संबंधित कामे."
+                   data-en="Work related to the Mahatma Gandhi National Rural Employment Guarantee scheme.">
+                    महात्मा गांधी राष्ट्रीय ग्रामीण रोजगार हमी योजनेशी संबंधित कामे.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Swachh Bharat Mission</h3>
+                <p data-mr="स्वच्छता व स्वच्छ परिसराशी संबंधित उपक्रम."
+                   data-en="Initiatives related to sanitation and a clean environment.">
+                    स्वच्छता व स्वच्छ परिसराशी संबंधित उपक्रम.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+    <section id="gallery">
+
+        <h2 data-mr="गॅलरी"
+            data-en="Gallery">
+            गॅलरी
+        </h2>
+
+        <div class="gallery">
+
+            <img src="https://st.indiarailinfo.com/kjfdsuiemjvcya24/0/0/1/1/6686011/0/vlcsnap2025062111h29m20s5321056483.jpg"
+                 alt="Rukadi Railway Station">
+
+            <img src="https://www.mappls.com/place/8ADA68_1649391800579_0.png"
+                 alt="Rukadi Railway Station Building">
+
+            <img src="https://www.mappls.com/place/8ADA68_1649391800680_1.png"
+                 alt="Rukadi Railway Station Signboard">
+
+        </div>
+
+        <p class="note"
+           data-mr="टीप: गॅलरीतील चित्रे इंटरनेटवरून लोड होतात, त्यामुळे वेबसाइट पाहताना इंटरनेट कनेक्शन आवश्यक आहे."
+           data-en="Note: Gallery images are loaded from the internet, so an internet connection is required to view them.">
+            टीप: गॅलरीतील चित्रे इंटरनेटवरून लोड होतात, त्यामुळे वेबसाइट पाहताना इंटरनेट कनेक्शन आवश्यक आहे.
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <h2 data-mr="संपर्क माहिती"
+            data-en="Contact Information">
+            संपर्क माहिती
+        </h2>
+
+        <div class="contact-box">
+
+            <h3 data-mr="रुकडी ग्रामपंचायत"
+                data-en="Rukadi Gram Panchayat">
+                रुकडी ग्रामपंचायत
+            </h3>
+
+            <p>
+                <b data-mr="पत्ता:" data-en="Address:">पत्ता:</b><br>
+
+                Rukadi, Taluka Hatkanangle,<br>
+                District Kolhapur, Maharashtra - 416118
+            </p>
+
+        </div>
+
+        <h3 data-mr="रुकडी गावाचा नकाशा"
+            data-en="Map of Rukadi Village">
+            रुकडी गावाचा नकाशा
+        </h3>
+
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=74.334%2C16.702%2C74.374%2C16.742&layer=mapnik&marker=16.72248%2C74.35405">
+        </iframe>
+
+        <p>
+            <a href="https://www.openstreetmap.org/?mlat=16.72248&mlon=74.35405#map=14/16.72248/74.35405"
+               target="_blank">
+                <span data-mr="मोठ्या नकाशावर उघडा"
+                      data-en="Open Larger Map">
+                    मोठ्या नकाशावर उघडा
+                </span>
+            </a>
+        </p>
+
+    </section>
+
+
+    <footer>
+        <p>© 2026 Rukadi Gram Panchayat Project</p>
+        <p data-mr="महाविद्यालयीन प्रकल्पासाठी तयार केलेली वेबसाइट"
+          
+        </p>
+    </footer>
+
+
+    <script>
+
+            function showSection(id) {
+
+                var sections = document.getElementsByTagName("section");
+
+                for (var i = 0; i < sections.length; i++) {
+                    sections[i].style.display = "none";
+                }
+
+                document.getElementById(id).style.display = "block";
+
+                window.scrollTo(0, 0);
+            }
+
+
+            var english = false;
+
+            function changeLanguage() {
+
+                english = !english;
+
+                var items = document.querySelectorAll("[data-mr]");
+
+                for (var i = 0; i < items.length; i++) {
+
+                    if (english) {
+                        items[i].innerText = items[i].getAttribute("data-en");
+                    }
+                    else {
+                        items[i].innerText = items[i].getAttribute("data-mr");
+                    }
+
+                }
+
+                document.getElementById("langBtn").innerText =
+                    english ? "मराठी" : "English";
+            }
+
+    </script>
+
+</body>
+</html>
